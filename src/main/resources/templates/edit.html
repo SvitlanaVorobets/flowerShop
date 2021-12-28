@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-between">
+    <p class="logo">FlowersShop</p>
+    <a class="white-button" th:href="@{/}">Return to home page</a>
+</div>
+<p class="headerText">Updating bouquet</p>
+<form th:method="PATCH" th:action="@{/updated/{id}(id=${bouquet.getId()})}" th:object="${bouquet}">
+    <p class="subText">Enter name: </p>
+    <input class="input" type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <br/>
+    <p class="subText">Choose accessory: </p>
+    <select class="select" th:field="*{accessory}">
+        <option th:value="Bow" th:text="Bow"></option>
+        <option th:value="Beard" th:text="Beard"></option>
+        <option th:value="Paper" th:text="Paper"></option>
+    </select>
+    <br/>
+    <input class="button input-button" type="submit" value="Update!"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All new bouquets</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<p class="logo">FlowersShop</p>
+<div class="d-flex justify-between">
+    <h1 class="mainText">Welcome to bouquet`s shop!</h1>
+    <img src="https://lh3.googleusercontent.com/proxy/GMPbQAvyZE7du1cSfcWt_YGauuYg5NfGTzwt_xMIK35lEVgvtvwq5aTgQ8qH8C1ONVSLdS9sNqictcIW5GHqoSa7Os66793EkMO1OR6rBmo">
+</div>
+<h5 class="subText">List of created bouquets:</h5>
+<div class="d-flex">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name of Bouquet</th>
+            <th>Price</th>
+            <th>Accessory</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bouquet : ${bouquets}">
+            <td><a class="styleLink" th:href="@{/{id}(id=${bouquet.getId()})}" th:text="${bouquet.getName()}">VALUE</a></td>
+            <td><p th:text="${bouquet.getPrice()}">VALUE</p></td>
+            <td><p th:text="${bouquet.getAccessory()}">VALUE</p></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="button" href="create">Create new bouquet</a>
+</div>
+<div class="footer">
+    <p class="footerText">Made by Svitlana Vorobets</p>
+</div>
+</body>
+</html>

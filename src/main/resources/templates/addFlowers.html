@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add flowers</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-between">
+    <p class="logo">FlowersShop</p>
+    <a class="white-button" th:href="@{/}">Return to home page</a>
+</div>
+<p class="headerText">Add flowers: </p>
+
+<form th:method="POST" th:action="@{/addedFlowers/} + ${form.flowers[0].bouquet.id}">
+
+    <div class="d-flex">
+        <div class="form">
+            <div th:each="flower, itemStat : ${form.flowers}">
+                <p class="subText">Type: </p>
+                <select class="select" th:field="${form.flowers[__${itemStat.index}__].type}">
+                    <option th:value="Rose" th:text="Rose"></option>
+                    <option th:value="Tulip" th:text="Tulip"></option>
+                    <option th:value="Chamomile" th:text="Chamomile"></option>
+                </select>
+                <p class="subText">Length: </p>
+                <input class="input" th:field="${form.flowers[__${itemStat.index}__].lengthOfPedicel}" />
+                <p class="subText">Level: </p>
+                <input class="input" th:field="${form.flowers[__${itemStat.index}__].levelOfFreshness}" />
+                <input class="input" th:field="${form.flowers[__${itemStat.index}__].bouquet.id}" hidden/>
+            </div>
+        </div>
+
+        <div>
+            <p class="headerText2">Price of flowers: </p>
+            <p class="subText">Rose - 15 </p>
+            <p class="subText">Tulip - 10 </p>
+            <p class="subText">Paper - 5</p>
+        </div>
+    </div>
+
+    <input class="button input-button" type="submit" value="Create!"/>
+</form>
+</body>
+</html>

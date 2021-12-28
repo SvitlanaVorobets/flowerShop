@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit flower</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-between">
+    <p class="logo">FlowersShop</p>
+    <a class="white-button" th:href="@{/}">Return to home page</a>
+</div>
+<p class="headerText">Updating flower</p>
+<form th:method="POST" th:action="@{/editedFlower/} + ${flower.getId()} + @{/} + ${flower.bouquet.id}" th:object="${flower}">
+    <p class="headerText2">Name of Bouquet</p>
+    <p class="subText" th:text="*{bouquet.name}" th:field="*{bouquet.id}"></p>
+    <p class="headerText2">Type of flower</p>
+    <p class="subText" th:text="*{type}"></p>
+    <br/>
+    <p class="subText">Length: </p>
+    <input class="input" th:field="*{lengthOfPedicel}" />
+    <p class="subText">Level: </p>
+    <input class="input" th:field="*{levelOfFreshness}" />
+    <br/>
+    <input class="button input-button" type="submit" value="Update!"/>
+</form>
+</body>
+</html>

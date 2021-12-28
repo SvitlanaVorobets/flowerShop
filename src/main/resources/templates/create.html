@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New bouquet</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-between">
+    <p class="logo">FlowersShop</p>
+    <a class="white-button" th:href="@{/}">Return to home page</a>
+</div>
+<p class="headerText">Create bouquet</p>
+<div class="d-flex">
+<form th:method="POST" th:action="@{/created/{id}(id=${bouquet.getId()})}" class="form">
+    <p class="subText">Enter name: </p>
+    <input class="input" type="text" th:field="${bouquet.name}" id="name"/>
+    <div class="validation" th:if="${#fields.hasErrors('bouquet.name')}" th:errors="${bouquet.name}">Name Error</div>
+    <p class="subText">Choose accessory: </p>
+    <select class="select" th:field="${bouquet.accessory}">
+        <option th:value="Bow" th:text="Bow"></option>
+        <option th:value="Beard" th:text="Beard"></option>
+        <option th:value="Paper" th:text="Paper"></option>
+    </select>
+    <br/>
+    <p class="subText">Choose quantity of flowers: </p>
+    <input class="input" th:field="${find.quantityOfFlowers}"/>
+    <br/>
+    <input class="button input-button" type="submit" value="Create!"/>
+</form>
+    <div>
+        <p class="headerText2">Price of accessory: </p>
+        <p class="subText">Bow - 15 </p>
+        <p class="subText">Beard - 20 </p>
+        <p class="subText">Paper - 5</p>
+    </div>
+</div>
+</body>
+</html>

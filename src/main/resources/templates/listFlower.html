@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of flowers</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-between">
+    <p class="logo">FlowersShop</p>
+    <a class="white-button" th:href="@{/}">Return to home page</a>
+</div>
+<p class="subText">There are list of flowers which you can sort by level of freshness or filter by length of pedicel. </p>
+<form th:method="POST" th:action="@{/{id}/listFlowers/found(id=${flowers.iterator().next().getBouquet().getId()})}">
+    <p class="subText">Min length: </p>
+    <input class="input" th:field="${find.minLength}"/>
+    <p class="subText">Max length: </p>
+    <input class="input" th:field="${find.maxLength}"/>
+    <br/>
+    <input class="button input-button" type="submit" value="List of found flowers"/>
+</form>
+
+<a class="button" th:href="@{/{id}/listFlowers/sorted(id=${flowers.iterator().next().getBouquet().getId()})}">List of sorted flowers</a>
+
+<div class="d-flex" th:each="flower : ${flowers}">
+    <div>
+        <p class="headerText2">Type of flower:</p>
+        <p class="subText" th:text="${flower.type}">VALUE</p>
+        <p class="headerText2">Length Of Pedicel:</p>
+        <p class="subText" th:text="${flower.lengthOfPedicel}">VALUE</p>
+        <p class="headerText2">Level Of Freshness:</p>
+        <p class="subText" th:text="${flower.levelOfFreshness}">VALUE</p>
+    </div>
+
+    <br/>
+    <div class="d-flex">
+        <a class="button" th:href="@{/editFlower/{id}(id=${flower.getId()})}">Edit</a>
+        <a class="button" th:href="@{/deleteFlower/{id}(id=${flower.getId()})}">Delete</a>
+    </div>
+
+</div>
+<div class="footer">
+    <p class="footerText">Made by Svitlana Vorobets</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Selected bouquet</title>
+    <link type="text/css" href="../../static/css/style.css" th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-between">
+    <p class="logo">FlowersShop</p>
+    <a class="white-button" th:href="@{/}">Return to home page</a>
+</div>
+
+<p class="headerText">Id of bouquet: </p>
+<p class="subText" th:text="${bouquet.getId()}">VALUE</p>
+<p class="headerText">Name of bouquet: </p>
+<p class="subText" th:text="${bouquet.getName()}">VALUE</p>
+<p class="headerText">Flowers of bouquet: </p>
+<p class="subText" th:text="${bouquet.getFlowers()}">VALUE</p>
+<p class="headerText">Accessory: </p>
+<p class="subText" th:text="${bouquet.getAccessory()}">VALUE</p>
+<p class="headerText">Price: </p>
+<p class="subText" th:text="${bouquet.getPrice()}">VALUE</p>
+
+<a class="button" th:href="@{/{id}/addingFlowers/1(id=${bouquet.getId()})}">Add flower</a>
+<br/>
+<a class="button" th:href="@{/{id}/listFlowers(id=${bouquet.getId()})}">List of flowers</a>
+<br/>
+<a class="button" th:href="@{/{id}/edit(id=${bouquet.getId()})}">Edit bouquet</a>
+<br/>
+<a class="button" th:href="@{/deleted/{id}(id=${bouquet.getId()})}">Delete bouquet</a>
+
+<div class="footer">
+    <p class="footerText">Made by Svitlana Vorobets</p>
+</div>
+</body>
+</html>
